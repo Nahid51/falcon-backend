@@ -19,9 +19,9 @@ exports.getProducts = async (req, res, next) => {
 }
 
 exports.getProduct = async (req, res, next) => {
-    const id = req.params.id;
+    const slug = req.params.id;
     try {
-        const getProduct = await productModel.findById({ _id: id });
+        const getProduct = await productModel.findOne({ slug: slug });
         res.status(200).json(getProduct)
     } catch (error) {
         next(error)
